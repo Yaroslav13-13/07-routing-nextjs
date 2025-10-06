@@ -12,7 +12,6 @@ export default function TagsMenu() {
 
   const toggleMenu = () => setOpen(!open);
 
-  // Закриваємо меню при кліку поза ним
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -39,7 +38,7 @@ export default function TagsMenu() {
                 tag === "All" ? "/notes/filter/All" : `/notes/filter/${tag}`
               }
               className={css.menuLink}
-              onClick={() => setOpen(false)} // закриття при виборі
+              onClick={() => setOpen(false)}
             >
               {tag}
             </Link>
