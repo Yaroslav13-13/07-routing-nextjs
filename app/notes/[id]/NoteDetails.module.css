@@ -107,7 +107,9 @@
   display: inline-block;
 } */
 
-.container {
+/* ==================================================== */
+
+/* .container {
   width: 90%;
   max-width: 800px;
   margin: 32px auto;
@@ -213,4 +215,108 @@
 
 .icon {
   display: inline-block;
+} */
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 24px;
+  background-color: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+  color: #e0e7ff;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 12px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.content {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+}
+
+.boxtext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.date {
+  font-size: 14px;
+  color: #94a3b8;
+  text-align: right;
+  display: flex;
+  align-items: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  background-color: #60a5fa;
+  border: 1px solid #3b82f6;
+  border-radius: 14px;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.backButton:hover {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(14, 165, 233, 0.4);
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

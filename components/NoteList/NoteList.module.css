@@ -150,7 +150,7 @@
 }
 ================================================ */
 
-.list {
+/* .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
@@ -274,4 +274,203 @@
   color: #ffffff;
   background-color: #00abe4;
   border-radius: 12px;
+} */
+/* !======================================================== */
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  list-style: none;
+}
+
+.listItem {
+  perspective: 1000px;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.listItem:hover .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Фронт картки - нотатка з смужками */
+.cardFront {
+  position: relative;
+  background: repeating-linear-gradient(
+    0deg,
+    #ffffff,
+    #ffffff 20px,
+    #f0f0f0 20px,
+    #f0f0f0 21px
+  ); /* смужки як блокнот */
+  border: 2px solid #00abe4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Закладки зверху праворуч */
+.cardFront::before,
+.cardFront::after,
+.cardFront .greenTab {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cardFront::before {
+  top: -10px;
+  right: -10px;
+  background-color: #ff6b6b; /* червона */
+  transform: rotate(20deg);
+}
+
+.cardFront::after {
+  top: -15px;
+  right: -25px;
+  background-color: #feca57; /* жовта */
+  transform: rotate(-15deg);
+}
+
+.cardFront .greenTab {
+  top: -12px;
+  right: -40px;
+  background-color: #1dd1a1; /* зелена */
+  transform: rotate(10deg);
+}
+
+.cardBack {
+  background: #ffffff;
+  transform: rotateY(180deg);
+  overflow-y: auto;
+  color: #000;
+}
+
+.cardFront .title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #00abe4;
+  margin: 0 auto;
+  word-break: break-word;
+}
+
+.content {
+  font-size: 16px;
+  color: #000;
+  flex-grow: 1;
+  padding: 15px;
+  text-align: start;
+}
+
+.button {
+  align-self: flex-end;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #f94e4e;
+  transform: scale(1.05);
+}
+
+.viewButton {
+  align-self: flex-end;
+  padding: 3px 9px;
+  font-size: 14px;
+  background: #00abe4;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.viewButton:hover {
+  background: #0079b5;
+  transform: translateY(-1px);
+  color: #e9f1fa;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #000000;
+  background-color: #feca57;
+  border-radius: 12px;
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.listItem:hover .cardInner {
+  transform: rotateY(180deg); /* залишається на місці */
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  top: 0;
+  left: 0; /* важливо для фіксованої позиції */
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
