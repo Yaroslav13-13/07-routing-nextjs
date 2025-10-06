@@ -32,6 +32,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes }) => {
           <div className={css.cardInner}>
             <div className={css.cardFront}>
               <h2 className={css.title}>{note.title}</h2>
+              <div className={css.greenTab}></div> {/* зелена закладка */}
             </div>
 
             <div className={css.cardBack}>

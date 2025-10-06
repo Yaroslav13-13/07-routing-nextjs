@@ -24,7 +24,6 @@ export default function SignInPage() {
             Go Home
           </Link>
         </div>
-
         {/* Текст */}
         <div className={css.headerText}>
           <h1>Welcome</h1>

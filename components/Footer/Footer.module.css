@@ -1,26 +1,26 @@
 .footer {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  background: #e9f1fa;
+  background: #1e293b; /* остаточний фон */
   border-top: 2px solid #00abe4;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   text-align: center;
-  color: #000;
+  color: #94a3b8; /* остаточний текст */
   padding: 0 20px;
-  flex-direction: column;
-  align-items: center;
 }
 
 .footer a {
-  transition: color 0.3s;
-  justify-content: center;
+  color: #60a5fa; /* остаточний колір посилань */
   text-decoration: none;
+  transition: color 0.25s ease;
 }
 
 .footer a:hover {
-  color: #60a5fa;
+  color: #0ea5e9; /* ховер */
 }
 
 .container {
@@ -36,6 +36,7 @@
   margin-top: 0;
   margin-bottom: 12px;
   font-weight: 600;
+  color: #00abe4;
 }
 
 .column p {
@@ -72,7 +73,7 @@
 }
 
 .socials a {
-  color: #000;
+  color: #cbd5e1;
   transition:
     color 0.2s ease,
     transform 0.2s ease;
@@ -80,7 +81,7 @@
 
 .socials a:hover {
   transform: scale(1.2);
-  color: #5d9cfa;
+  color: #0ea5e9;
 }
 
 .bottom {
@@ -105,6 +106,11 @@
   text-align: center;
   margin-bottom: 10px;
   color: #00abe4;
+  color: #60a5fa;
+}
+
+.section h3 {
+  color: #60a5fa;
 }
 
 .links {
@@ -121,13 +127,13 @@
 }
 
 .links a {
-  color: #000;
+  color: #cbd5e1;
   transition: color 0.2s ease;
   font-weight: 500;
 }
 
 .links a:hover {
-  color: #00abe4;
+  color: #0ea5e9;
   transform: scale(1.1);
 }
 

@@ -21,7 +21,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 } */
 
-.backdrop {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
