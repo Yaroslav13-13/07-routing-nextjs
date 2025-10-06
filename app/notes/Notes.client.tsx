@@ -91,3 +91,36 @@ const NotesClient: React.FC = () => {
 };
 
 export default NotesClient;
+
+// "use client";
+
+// import { useQuery } from "@tanstack/react-query";
+// import { fetchNotes } from "@/lib/api";
+// import Loader from "@/components/Loader/Loader";
+// import type { Note } from "@/types/note";
+
+// interface NotesClientProps {
+//   tag?: string;
+// }
+
+// export default function NotesClient({ tag }: NotesClientProps) {
+//   const { data, isLoading } = useQuery({
+//     queryKey: ["notes", tag || ""],
+//     queryFn: () =>
+//       fetchNotes({
+//         page: 1,
+//         perPage: 12,
+//         search: tag && tag !== "All" ? tag : "", // передаємо тег як search, якщо не All
+//       }),
+//   });
+
+//   if (isLoading) return <Loader />;
+
+//   return (
+//     <ul>
+//       {data?.notes.map((note: Note) => (
+//         <li key={note.id}>{note.title}</li>
+//       ))}
+//     </ul>
+//   );
+// }
