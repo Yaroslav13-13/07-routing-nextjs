@@ -5,7 +5,6 @@
   list-style: none;
   padding: 0;
   margin: 20px 0;
-  /* margin-bottom: 120px; */
 }
 
 .pagination li {
@@ -35,13 +34,11 @@
   transition: color 0.25s ease;
 }
 
-/* Hover для всіх кнопок */
 .pagination li:hover:not(.disabled):not(.active) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
 }
 
-/* Активна сторінка */
 .pagination li.active {
   background: linear-gradient(135deg, #004182, #0a66c2);
   border-color: #0d6efd;
@@ -54,7 +51,6 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Disabled кнопки */
 .pagination li.disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -62,8 +58,136 @@
   transform: none;
 }
 
-/* Натискання */
 .pagination li:active:not(.disabled):not(.active) {
   transform: scale(0.95);
   box-shadow: 0 2px 6px rgba(13, 110, 253, 0.25);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pagination li {
+  min-width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #00abe4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.pagination li a {
+  color: #00abe4;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.pagination li:hover:not(.disabled):not(.active) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 171, 228, 0.2);
+}
+
+.pagination li.active {
+  background: #00abe4;
+  border-color: #0079b5;
+  box-shadow: 0 4px 12px rgba(0, 171, 228, 0.3);
+}
+
+.pagination li.active a {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.pagination li.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.pagination li:active:not(.disabled):not(.active) {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 171, 228, 0.25);
+}
+
+.paginationContainer {
+  background-color: #e9f1fa;
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  min-width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #00abe4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 171, 228, 0.2);
+}
+
+.link {
+  color: #00abe4;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.25s ease;
+}
+
+.item:hover:not(.disabled):not(.active) .link {
+  color: #0079b5;
+}
+
+.item:hover:not(.disabled):not(.active) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 171, 228, 0.3);
+}
+
+.active {
+  background: #00abe4;
+  border-color: #0079b5;
+  box-shadow: 0 4px 12px rgba(0, 171, 228, 0.4);
+}
+
+.active .link {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.item:active:not(.disabled):not(.active) {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 171, 228, 0.25);
 }

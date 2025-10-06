@@ -8,8 +8,8 @@
 }
 
 .menuButton {
-  background: #00ffe1;
-  color: #000000;
+  background-color: #00abe4;
+  color: #ffffff;
   border: none;
   padding: 0.2rem 3rem;
   border-bottom-left-radius: 9999px;
@@ -20,7 +20,8 @@
 }
 
 .menuButton:hover {
-  background: #2563eb;
+  background-color: #0079b5;
+  transform: translateY(-1px);
 }
 
 .menuList {
@@ -29,8 +30,8 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #1f2937;
-  border-radius: 8px;
+  background: #e9f1fa;
+  border-radius: 12px;
   margin-top: 0.5rem;
   list-style: none;
   padding: 0.5rem 0;
@@ -49,13 +50,13 @@
 .menuLink {
   display: block;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: #0079b5;
   text-decoration: none;
   font-size: 15px;
   transition: background 0.2s ease;
 }
 
 .menuLink:hover {
-  background: #3b82f6;
+  background: #0079b5;
   color: #fff;
 }
