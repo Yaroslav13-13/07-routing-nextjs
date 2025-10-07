@@ -25,10 +25,16 @@ const NotesClient: React.FC = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [debouncedSearch] = useDebounce(search, 500);
+  const [isClient, setIsClient] = useState(false); // новий стан для SSR/CSR
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
   const [notificationType, setNotificationType] =
     useState<NotificationType>("success");
+
+  // відмічаємо, що ми на клієнті
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const { data, isLoading, isError } = useQuery<FetchNotesResponse, Error>({
     queryKey: ["notes", page, debouncedSearch],
@@ -55,6 +61,9 @@ const NotesClient: React.FC = () => {
       setNotificationType("error");
     }
   }, [isLoading, isError, notes.length, debouncedSearch]);
+
+  // поки SSR не завершено - нічого не рендеримо
+  if (!isClient) return null;
 
   return (
     <div>
@@ -91,36 +100,3 @@ const NotesClient: React.FC = () => {
 };
 
 export default NotesClient;
-
-// "use client";
-
-// import { useQuery } from "@tanstack/react-query";
-// import { fetchNotes } from "@/lib/api";
-// import Loader from "@/components/Loader/Loader";
-// import type { Note } from "@/types/note";
-
-// interface NotesClientProps {
-//   tag?: string;
-// }
-
-// export default function NotesClient({ tag }: NotesClientProps) {
-//   const { data, isLoading } = useQuery({
-//     queryKey: ["notes", tag || ""],
-//     queryFn: () =>
-//       fetchNotes({
-//         page: 1,
-//         perPage: 12,
-//         search: tag && tag !== "All" ? tag : "", // передаємо тег як search, якщо не All
-//       }),
-//   });
-
-//   if (isLoading) return <Loader />;
-
-//   return (
-//     <ul>
-//       {data?.notes.map((note: Note) => (
-//         <li key={note.id}>{note.title}</li>
-//       ))}
-//     </ul>
-//   );
-// }

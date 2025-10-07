@@ -1,3 +1,4 @@
+/* ===================== List & Cards ===================== */
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -22,115 +23,7 @@
   transform: rotateY(180deg);
 }
 
-.cardFront,
-.cardBack {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Фронт картки - нотатка з смужками */
-.cardFront {
-  position: relative;
-  background: repeating-linear-gradient(
-    0deg,
-    #ffffff,
-    #ffffff 20px,
-    #f0f0f0 20px,
-    #f0f0f0 21px
-  ); /* смужки як блокнот */
-  border: 2px solid #00abe4;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Закладки зверху праворуч */
-/* .cardFront::before,
-.cardFront::after,
-.cardFront .greenTab {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.cardFront::before {
-  top: -10px;
-  right: -10px;
-  background-color: #ff6b6b;
-  transform: rotate(20deg);
-}
-
-.cardFront::after {
-  top: 1px;
-  right: -25px;
-  background-color: #feca57;
-}
-
-.cardFront .greenTab {
-  top: -10px;
-  right: -20px;
-  background-color: #1dd1a1;
-  transform: rotate(10deg);
-} */
-
-/* Загальні ярлички */
-.cardFront::before,
-.cardFront::after,
-.cardFront .greenTab {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Червоний ярличок – найпередній */
-.cardFront::before {
-  top: 0;
-  right: -12px;
-  background-color: #ff6b6b;
-  z-index: 3;
-}
-
-/* Жовтий – під червоним */
-.cardFront::after {
-  top: 10px;
-  right: -12px;
-  background-color: #feca57;
-  z-index: 2;
-}
-
-/* Зелений – під жовтим */
-.cardFront .greenTab {
-  top: 20px;
-  right: -12px;
-  background-color: #1dd1a1;
-  z-index: 1;
-}
-
-/* Картка задня */
-.cardBack {
-  background: #ffffff;
-  transform: rotateY(180deg);
-  overflow-y: auto;
-  color: #000;
-}
-
-/* Загальні стилі фронт та бек картки */
+/* ===================== Card Front & Back ===================== */
 .cardFront,
 .cardBack {
   position: absolute;
@@ -146,20 +39,65 @@
   justify-content: center;
 }
 
-/* Внутрішній блок картки */
-.cardInner {
+.cardFront {
+  background: repeating-linear-gradient(
+    0deg,
+    #ffffff,
+    #ffffff 20px,
+    #f0f0f0 20px,
+    #f0f0f0 21px
+  );
+  border: 2px solid #00abe4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   position: relative;
-  width: 100%;
-  height: 200px;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
 }
 
-.listItem:hover .cardInner {
+/* Front card tabs */
+.cardFront::before,
+.cardFront::after,
+.cardFront .greenTab {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cardFront::before {
+  top: 0;
+  right: -12px;
+  background-color: #ff6b6b;
+  z-index: 3;
+}
+
+.cardFront::after {
+  top: 10px;
+  right: -12px;
+  background-color: #feca57;
+  z-index: 2;
+}
+
+.cardFront .greenTab {
+  top: 20px;
+  right: -12px;
+  background-color: #1dd1a1;
+  z-index: 1;
+}
+
+.cardBack {
+  background: #ffffff;
   transform: rotateY(180deg);
+  overflow-y: auto;
+  color: #000;
 }
 
-/* Заголовок фронт-картки */
+/* ===================== Card Content ===================== */
 .cardFront .title {
   font-size: 22px;
   font-weight: 700;
@@ -169,7 +107,6 @@
   word-break: break-word;
 }
 
-/* Контент */
 .content {
   font-size: 16px;
   color: #000;
@@ -178,7 +115,7 @@
   text-align: start;
 }
 
-/* Кнопки */
+/* ===================== Buttons ===================== */
 .button,
 .viewButton {
   align-self: flex-end;
@@ -214,7 +151,7 @@
   color: #e9f1fa;
 }
 
-/* Футер картки */
+/* ===================== Card Footer ===================== */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -222,7 +159,7 @@
   padding: 10px;
 }
 
-/* Теги */
+/* ===================== Tags ===================== */
 .tag {
   display: inline-block;
   padding: 4px 10px;

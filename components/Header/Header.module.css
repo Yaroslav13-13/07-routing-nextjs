@@ -1,7 +1,7 @@
 .header {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  background: #1e293b; /* остаточний фон */
+  background: #1e293b;
   border-bottom: 2px solid #00abe4;
   padding: 0.5rem 2rem;
   display: flex;
@@ -16,7 +16,7 @@
 .logo {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #60a5fa; /* остаточний */
+  color: #60a5fa;
   text-decoration: none;
 }
 
@@ -41,7 +41,7 @@
   overflow: hidden;
   text-decoration: none;
   font-weight: 500;
-  color: #cbd5e1; /* остаточний */
+  color: #cbd5e1;
   transition: all 0.25s ease;
 }
 

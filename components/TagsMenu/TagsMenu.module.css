@@ -1,3 +1,4 @@
+/* ===================== Menu Container ===================== */
 .menuContainer {
   position: absolute;
   left: 50%;
@@ -7,6 +8,7 @@
   z-index: 100;
 }
 
+/* ===================== Menu Button ===================== */
 .menuButton {
   background-color: #00abe4;
   color: #ffffff;
@@ -26,172 +28,39 @@
   transform: translateY(-1px);
 }
 
+/* ===================== Menu List ===================== */
 .menuList {
   display: none;
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #e9f1fa;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  background: rgba(233, 241, 250, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
-  margin-top: 0.5rem;
-  list-style: none;
   padding: 0.5rem 0;
+  list-style: none;
   min-width: 160px;
   z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .menuList.show {
   display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
+/* ===================== Menu Items ===================== */
 .menuItem {
   margin: 0;
-}
-
-.menuLink {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #0079b5;
-  text-decoration: none;
-  font-size: 15px;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-
-.menuLink:hover {
-  background: #0079b5;
-  color: #fff;
-}
-
-.tagsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.tagButton {
-  padding: 6px 12px;
-  font-size: 13px;
-  border-radius: 12px;
-  border: 1px solid #0ea5e9;
-  background: #1e293b;
-  color: #60a5fa;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.tagButton:hover {
-  background: #2563eb;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-.tagButton.active {
-  background: #0ea5e9;
-  color: #1e293b;
-  font-weight: 600;
-  border-color: #0ea5e9;
-}
-
-.menuContainer {
-  position: absolute;
-  left: 50%;
-  bottom: -1.7rem;
-  transform: translateX(-35%);
-  display: inline-block;
-  z-index: 100;
-}
-
-.menuButton {
-  background-color: #00abe4;
-  color: #ffffff;
-  border: none;
-  padding: 0.2rem 3rem;
-  border-bottom-left-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-  cursor: pointer;
-  font-size: 16px;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.menuButton:hover {
-  background-color: #0079b5;
-  transform: translateY(-1px);
-}
-
-.menuList {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #e9f1fa;
-  border-radius: 12px;
-  margin-top: 0.5rem;
-  list-style: none;
-  padding: 0.5rem 0;
-  min-width: 160px;
-  z-index: 200;
-}
-
-.menuList.show {
-  display: block;
-}
-
-.menuItem {
-  margin: 0;
-}
-
-.menuLink {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #0079b5;
-  text-decoration: none;
-  font-size: 15px;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-
-.menuLink:hover {
-  background: #0079b5;
-  color: #fff;
-}
-
-.tagsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.tagButton {
-  padding: 6px 12px;
-  font-size: 13px;
-  border-radius: 12px;
-  border: 1px solid #0ea5e9;
-  background: #1e293b;
-  color: #60a5fa;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.tagButton:hover {
-  background: #2563eb;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-.tagButton.active {
-  background: #0ea5e9;
-  color: #1e293b;
-  font-weight: 600;
-  border-color: #0ea5e9;
 }
 
 .menuLink {
@@ -213,34 +82,40 @@
   transform: translateX(4px);
 }
 
-.menuList {
-  -webkit-backdrop-filter: blur(6px); /* Safari 9+ та iOS 9+ */
-  backdrop-filter: blur(6px); /* сучасні браузери */
-  background: rgba(233, 241, 250, 0.9);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  padding: 0.5rem 0;
-  list-style: none;
-  min-width: 160px;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-.menuList.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-
 .menuLink.active {
   font-weight: 600;
   background: #00abe4;
   color: #fff;
+}
+
+/* ===================== Tags ===================== */
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tagButton {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 12px;
+  border: 1px solid #0ea5e9;
+  background: #1e293b;
+  color: #60a5fa;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tagButton:hover {
+  background: #2563eb;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.tagButton.active {
+  background: #0ea5e9;
+  color: #1e293b;
+  font-weight: 600;
+  border-color: #0ea5e9;
 }

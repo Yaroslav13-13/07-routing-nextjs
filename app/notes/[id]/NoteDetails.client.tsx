@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "../../../lib/api";
 import type { Note } from "../../../types/note";
 import Loader from "../../../components/Loader/Loader";
-import { FiTag, FiCalendar, FiArrowLeft } from "react-icons/fi";
-import Link from "next/link";
+import { FiTag, FiCalendar, FiX } from "react-icons/fi";
 import css from "./NoteDetails.module.css";
 
 interface NoteDetailsClientProps {
@@ -14,6 +14,8 @@ interface NoteDetailsClientProps {
 }
 
 const NoteDetailsClient: React.FC<NoteDetailsClientProps> = ({ noteId }) => {
+  const router = useRouter();
+
   const {
     data: note,
     isLoading,
@@ -27,29 +29,34 @@ const NoteDetailsClient: React.FC<NoteDetailsClientProps> = ({ noteId }) => {
   if (isLoading) return <Loader />;
   if (isError || !note) return <p>Something went wrong.</p>;
 
-  return (
-    <div className={css.container}>
-      <div className={css.item}>
-        <div className={css.header}>
-          <h2>{note.title}</h2>
-          <Link href="/notes" className={css.backButton}>
-            <FiArrowLeft size={20} className={css.icon} />
-            Back to Notes
-          </Link>
-        </div>
+  const closeModal = () => router.back();
 
+  return (
+    <div className={css.overlay} onClick={closeModal}>
+      <div
+        className={css.modal}
+        onClick={(e) => e.stopPropagation()} // щоб не закривалось при кліку всередині
+      >
+        <button
+          onClick={closeModal}
+          className={css.closeButton}
+          aria-label="Close details"
+          title="Close"
+        >
+          <FiX size={22} />
+        </button>
+
+        <h2 className={css.title}>{note.title}</h2>
         <p className={css.content}>{note.content}</p>
 
-        <div className={css.boxtext}>
+        <div className={css.infoBox}>
           {note.tag && (
             <span className={css.tag}>
-              <FiTag style={{ marginRight: "6px" }} />
-              {note.tag}
+              <FiTag /> {note.tag}
             </span>
           )}
           <p className={css.date}>
-            <FiCalendar style={{ marginRight: "6px" }} />
-            {new Date(note.createdAt).toLocaleString()}
+            <FiCalendar /> {new Date(note.createdAt).toLocaleString()}
           </p>
         </div>
       </div>

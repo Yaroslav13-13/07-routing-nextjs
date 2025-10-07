@@ -1,10 +1,23 @@
+// import NotesClient from "./Notes.client";
+
+// export default function FilteredNotesPage({
+//   params,
+// }: {
+//   params: { slug?: string[] };
+// }) {
+//   const tag = params.slug?.[0] ?? "All";
+//   return <NotesClient tag={tag} />;
+// }
+
 import NotesClient from "./Notes.client";
 
-export default function FilteredNotesPage({
+export default async function FilteredNotesPage({
   params,
 }: {
-  params: { slug?: string[] };
+  params: Promise<{ slug?: string[] }>;
 }) {
-  const tag = params.slug?.[0] ?? "All";
+  const { slug } = await params; // ✅ обов’язково чекаємо
+  const tag = slug?.[0] ?? "All";
+
   return <NotesClient tag={tag} />;
 }
