@@ -18,7 +18,7 @@ const NoteDetailsClient: React.FC<NoteDetailsClientProps> = ({ noteId }) => {
 
   const {
     data: note,
-    isLoading,
+    // isLoading,
     isError,
   } = useQuery<Note, Error>({
     queryKey: ["note", noteId],
@@ -26,17 +26,14 @@ const NoteDetailsClient: React.FC<NoteDetailsClientProps> = ({ noteId }) => {
     refetchOnMount: false,
   });
 
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;  потребує пофіксити (2 Loadera під час завантаження Notes?)
   if (isError || !note) return <p>Something went wrong.</p>;
 
   const closeModal = () => router.back();
 
   return (
     <div className={css.overlay} onClick={closeModal}>
-      <div
-        className={css.modal}
-        onClick={(e) => e.stopPropagation()} // щоб не закривалось при кліку всередині
-      >
+      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         <button
           onClick={closeModal}
           className={css.closeButton}
