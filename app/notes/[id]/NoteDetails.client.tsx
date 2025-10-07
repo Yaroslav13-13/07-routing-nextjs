@@ -18,7 +18,7 @@ const NoteDetailsClient: React.FC<NoteDetailsClientProps> = ({ noteId }) => {
 
   const {
     data: note,
-    // isLoading,
+    isLoading,
     isError,
   } = useQuery<Note, Error>({
     queryKey: ["note", noteId],
@@ -26,7 +26,7 @@ const NoteDetailsClient: React.FC<NoteDetailsClientProps> = ({ noteId }) => {
     refetchOnMount: false,
   });
 
-  // if (isLoading) return <Loader />;  потребує пофіксити (2 Loadera під час завантаження Notes?)
+  if (isLoading) return <Loader />;
   if (isError || !note) return <p>Something went wrong.</p>;
 
   const closeModal = () => router.back();

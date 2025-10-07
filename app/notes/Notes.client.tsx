@@ -39,7 +39,7 @@ const NotesClient: React.FC = () => {
   const { data, isLoading, isError } = useQuery<FetchNotesResponse, Error>({
     queryKey: ["notes", page, debouncedSearch],
     queryFn: () => fetchNotes({ page, perPage: 12, search: debouncedSearch }),
-    placeholderData: (prev) => prev,
+    // placeholderData: (prev) => prev,
   });
 
   const notes: Note[] = data?.notes ?? [];
