@@ -1,17 +1,19 @@
 import "./globals.css";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import TanStackProvider from "../components/TanStackProvider/TanStackProvider";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 
 export const metadata = {
   title: "NoteHub",
-  description: "Simple note-taking app",
+  description: "Manage your notes easily",
 };
 
 export default function RootLayout({
   children,
+  modal, // <-- додай це
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode; // <-- і це
 }) {
   return (
     <html lang="en">
@@ -19,8 +21,8 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           <main>{children}</main>
+          {modal} {/* <-- ось тут рендериться модальне вікно */}
           <Footer />
-          <div id="modal-root"></div>
         </TanStackProvider>
       </body>
     </html>

@@ -16,7 +16,7 @@ export default async function FilteredNotesPage({
 }: {
   params: Promise<{ slug?: string[] }>;
 }) {
-  const { slug } = await params; // ✅ обов’язково чекаємо
+  const { slug } = await params;
   const tag = slug?.[0] ?? "All";
 
   return <NotesClient tag={tag} />;
