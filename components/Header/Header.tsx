@@ -108,7 +108,7 @@ export default function Header() {
           </li>
           <li>
             <Link
-              href="/notes"
+              href="/notes/filter/All"
               className={pathname === "/notes" ? css.active : ""}
             >
               Notes

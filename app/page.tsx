@@ -14,7 +14,7 @@ export default function Home() {
             fast and modern.
           </p>
           <div className={css.heroActions}>
-            <Link href="/notes" className={css.ctaButton}>
+            <Link href="/notes/filter/All" className={css.ctaButton}>
               Get Started
             </Link>
             <Link href="/about" className={css.secondaryButton}>

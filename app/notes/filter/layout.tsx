@@ -1,14 +1,17 @@
+import { ReactNode } from "react";
+import css from "./NotesLayout.module.css";
+
 export default function FilterLayout({
   children,
   sidebar,
 }: {
-  children: React.ReactNode;
-  sidebar: React.ReactNode;
+  children: ReactNode;
+  sidebar: ReactNode;
 }) {
   return (
-    <div style={{ display: "flex", gap: "20px" }}>
+    <div className={css.container}>
       <aside>{sidebar}</aside>
-      <main style={{ flex: 1 }}>{children}</main>
+      <main className={css.main}>{children}</main>
     </div>
   );
 }

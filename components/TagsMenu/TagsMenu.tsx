@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import css from "./TagsMenu.module.css";
 
 const tags = ["All", "Todo", "Work", "Personal", "Meeting", "Shopping"];
 
 export default function TagsMenu() {
   const [open, setOpen] = useState(false);
+  const [currentTag, setCurrentTag] = useState("Notes");
   const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const toggleMenu = () => setOpen(!open);
 
@@ -25,10 +28,16 @@ export default function TagsMenu() {
     };
   }, []);
 
+  useEffect(() => {
+    const parts = pathname.split("/");
+    const tagFromPath = parts[3] || "All";
+    setCurrentTag(tagFromPath);
+  }, [pathname]);
+
   return (
     <div ref={menuRef} className={css.menuContainer}>
       <button className={css.menuButton} onClick={toggleMenu}>
-        Notes ▾
+        {currentTag} ▾
       </button>
       <ul className={`${css.menuList} ${open ? css.show : ""}`}>
         {tags.map((tag) => (
