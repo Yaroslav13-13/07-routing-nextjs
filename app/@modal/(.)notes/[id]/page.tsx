@@ -5,7 +5,7 @@ import {
   dehydrate,
   HydrationBoundary,
 } from "@tanstack/react-query";
-import TanStackProvider from "../../../../../components/TanStackProvider/TanStackProvider";
+import TanStackProvider from "../../../../components/TanStackProvider/TanStackProvider";
 // import { useRouter } from "next/navigation";
 import React from "react";
 
