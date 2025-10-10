@@ -1,5 +1,7 @@
-// import Loader from "@/components/Loader/Loader";
-
-// export default function LoadingNote() {
-//   return <Loader />;
-// }
+export default function Loading() {
+  return (
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <p>Loading note details...</p>
+    </div>
+  );
+}

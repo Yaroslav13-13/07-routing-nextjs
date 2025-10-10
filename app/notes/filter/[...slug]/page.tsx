@@ -1,23 +1,14 @@
-// import NotesClient from "./Notes.client";
-
-// export default function FilteredNotesPage({
-//   params,
-// }: {
-//   params: { slug?: string[] };
-// }) {
-//   const tag = params.slug?.[0] ?? "All";
-//   return <NotesClient tag={tag} />;
-// }
-
-import NotesClient from "./Notes.client";
+import React from "react";
+import NotesClient from "../[...slug]/Notes.client";
+import type { NoteTag } from "../../../../types/note";
 
 export default async function FilteredNotesPage({
   params,
 }: {
   params: Promise<{ slug?: string[] }>;
 }) {
-  const { slug } = await params;
-  const tag = slug?.[0] ?? "All";
+  const resolvedParams = await params;
+  const tag = (resolvedParams.slug?.[0] ?? "All") as NoteTag | "All";
 
   return <NotesClient tag={tag} />;
 }

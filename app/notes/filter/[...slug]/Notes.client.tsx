@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchNotes } from "@/lib/api";
+import { fetchNotes, type NotesResponse } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 import Loader from "@/components/Loader/Loader";
 import SearchBox from "@/components/SearchBox/SearchBox";
@@ -11,11 +11,11 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import Modal from "@/components/Modal/Modal";
 import Notification from "@/components/Notification/Notification";
 import { useDebounce } from "use-debounce";
-import type { Note } from "@/types/note";
 import css from "@/components/SearchBox/SearchBox.module.css";
+import type { Note, NoteTag } from "@/types/note";
 
 interface NotesClientProps {
-  tag?: string;
+  tag: NoteTag | "All";
 }
 
 type NotificationType = "success" | "error";
@@ -29,13 +29,17 @@ const NotesClient: React.FC<NotesClientProps> = ({ tag }) => {
   const [notificationType, setNotificationType] =
     useState<NotificationType>("success");
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["notes", page, tag, debouncedSearch],
+  const safeTag: NoteTag | undefined =
+    tag !== "All" ? (tag as NoteTag) : undefined;
+
+  const { data, isLoading, isError } = useQuery<NotesResponse, Error>({
+    queryKey: ["notes", page, safeTag, debouncedSearch],
     queryFn: () =>
       fetchNotes({
         page,
         perPage: 12,
-        search: tag && tag !== "All" ? tag : debouncedSearch,
+        search: debouncedSearch || undefined,
+        tag: safeTag,
       }),
   });
 

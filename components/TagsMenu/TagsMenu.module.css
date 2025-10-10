@@ -1,7 +1,7 @@
 /* ===================== Menu Container ===================== */
 .menuContainer {
   position: absolute;
-  left: 50%;
+  left: 60%;
   bottom: -1.7rem;
   transform: translateX(-35%);
   display: inline-block;

@@ -10,10 +10,10 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  modal, // <-- додай це
+  modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode; // <-- і це
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -21,7 +21,7 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           <main>{children}</main>
-          {modal} {/* <-- ось тут рендериться модальне вікно */}
+          {modal}
           <Footer />
         </TanStackProvider>
       </body>
