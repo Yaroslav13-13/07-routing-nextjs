@@ -1,31 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./SidebarNotes.module.css";
+import css from "./SidebarNotes.module.css";
 
 const tags = ["All", "Todo", "Work", "Personal", "Meeting", "Shopping"];
 
-export default function DefaultSidebar() {
-  const pathname = usePathname();
-
+export default function SidebarNotes() {
   return (
-    <aside className={styles.sidebar}>
+    <aside className={css.sidebar}>
       <nav>
-        <ul className={styles.nav}>
-          {tags.map((tag) => {
-            const isActive = pathname.includes(`/notes/filter/${tag}`);
-            return (
-              <li key={tag} className={styles.navItem}>
-                <Link
-                  href={`/notes/filter/${tag}`}
-                  className={`${styles.link} ${isActive ? styles.active : ""}`}
-                >
-                  {tag}
-                </Link>
-              </li>
-            );
-          })}
+        <ul className={css.menuList}>
+          {tags.map((tag) => (
+            <li key={tag}>
+              <Link href={`/notes/filter/${tag}`}>{tag}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </aside>

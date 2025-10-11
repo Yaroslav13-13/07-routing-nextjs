@@ -22,30 +22,39 @@
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
-  list-style: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none; /* прибрали крапки */
   margin: 0;
   padding: 0;
-  font-size: 18px;
 }
 
-.nav li {
+.navItemWithDropdown {
   position: relative;
 }
 
-.nav a {
-  position: relative;
+/* Посилання Home і кнопка Notes */
+.nav a,
+.navLink {
+  all: unset;
+  cursor: pointer;
   display: inline-block;
   padding: 0.6rem 1rem;
   border-radius: 12px;
-  overflow: hidden;
-  text-decoration: none;
   font-weight: 500;
   color: #cbd5e1;
+  position: relative;
   transition: all 0.25s ease;
 }
 
-.nav a::after {
+.nav a::after,
+.navLink::after {
   content: "";
   position: absolute;
   top: 0;
@@ -61,15 +70,52 @@
 }
 
 .nav a:hover::after,
-.nav a:focus::after,
-.nav a.active::after {
+.navLink:hover::after,
+.nav a.active::after,
+.navLink.active::after {
   transform: scaleX(1) scaleY(1);
 }
 
 .nav a:hover,
-.nav a.active {
+.navLink:hover,
+.nav a.active,
+.navLink.active {
   color: #0ea5e9;
   transform: translateY(-1px);
+}
+
+/* Випадаюче меню */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #1e293b;
+  border: 1px solid #00abe4;
+  border-radius: 12px;
+  list-style: none;
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem 0;
+  min-width: 140px;
+  z-index: 50;
+}
+
+.dropdown li {
+  margin: 0;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdownLink:hover,
+.dropdownLink.active {
+  background: #00abe4;
+  color: #fff;
 }
 
 .signIn {

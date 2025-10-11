@@ -1,18 +1,18 @@
 .sidebar {
   width: 200px;
   padding: 1.5rem;
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(30, 41, 59, 0.7);
   border-right: 2px solid #00abe4;
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   min-height: 112vh;
 }
 
-.nav {
+.menuList {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -21,41 +21,44 @@
   gap: 0.75rem;
 }
 
-.navItem {
-  display: block;
+.menuList li {
+  position: relative;
 }
 
-.link {
+.menuList a {
   display: block;
   padding: 0.6rem 1rem;
   border-radius: 12px;
   color: #cbd5e1;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.25s ease;
   position: relative;
+  transition: all 0.25s ease;
+  outline: none;
 }
 
-.link::before {
+.menuList a::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) scaleY(0);
-  width: 4px;
-  height: 80%;
-  background-color: #00abe4;
-  border-radius: 4px;
-  transition: transform 0.25s ease;
+  inset: 0;
+  border: 2px solid #00abe4;
+  border-radius: 12px;
+  transform: scaleX(0) scaleY(0);
+  transform-origin: top left;
+  transition: transform 0.4s ease;
+  pointer-events: none;
 }
 
-.link:hover,
-.active {
+.menuList a:hover,
+.menuList a:focus,
+.menuList a.active {
   color: #0ea5e9;
   background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
-.link:hover::before,
-.active::before {
-  transform: translateY(-50%) scaleY(1);
+.menuList a:hover::after,
+.menuList a:focus::after,
+.menuList a.active::after {
+  transform: scaleX(1) scaleY(1);
 }

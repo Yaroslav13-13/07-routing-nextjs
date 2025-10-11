@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import css from "./TagsMenu.module.css";
+import css from "../Header/Header.module.css";
 
 const tags = ["All", "Todo", "Work", "Personal", "Meeting", "Shopping"];
 
-export default function TagsMenu() {
+interface TagsMenuProps {
+  isActive: boolean;
+}
+
+export default function TagsMenu({ isActive }: TagsMenuProps) {
   const [open, setOpen] = useState(false);
-  const [currentTag, setCurrentTag] = useState("Notes");
   const menuRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
 
   const toggleMenu = () => setOpen(!open);
 
@@ -21,39 +22,34 @@ export default function TagsMenu() {
         setOpen(false);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    const parts = pathname.split("/");
-    const tagFromPath = parts[3] || "All";
-    setCurrentTag(tagFromPath);
-  }, [pathname]);
-
   return (
-    <div ref={menuRef} className={css.menuContainer}>
-      <button className={css.menuButton} onClick={toggleMenu}>
-        {currentTag} ▾
+    <div ref={menuRef} className={css.navItemWithDropdown}>
+      <button
+        className={`${css.navLink} ${isActive ? css.active : ""}`}
+        onClick={toggleMenu}
+      >
+        Notes ▾
       </button>
-      <ul className={`${css.menuList} ${open ? css.show : ""}`}>
-        {tags.map((tag) => (
-          <li key={tag} className={css.menuItem}>
-            <Link
-              href={
-                tag === "All" ? "/notes/filter/All" : `/notes/filter/${tag}`
-              }
-              className={css.menuLink}
-              onClick={() => setOpen(false)}
-            >
-              {tag}
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      {open && (
+        <ul className={css.dropdown}>
+          {tags.map((tag) => (
+            <li key={tag}>
+              <Link
+                href={`/notes/filter/${tag}`}
+                className={css.dropdownLink}
+                onClick={() => setOpen(false)}
+              >
+                {tag}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
