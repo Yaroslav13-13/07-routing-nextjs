@@ -80,7 +80,7 @@
 .navLink:hover,
 .nav a.active,
 .navLink.active {
-  color: #0ea5e9;
+  /* color: #0ea5e9; */
   transform: translateY(-1px);
 }
 
@@ -114,12 +114,12 @@
 
 .dropdownLink:hover,
 .dropdownLink.active {
-  background: #00abe4;
+  /* background: #00abe4; */
   color: #fff;
 }
 
 .signIn {
-  padding: 12px 20px;
+  padding: 12px 12px;
   font-size: 15px;
   font-weight: 600;
   background: #00abe4;
